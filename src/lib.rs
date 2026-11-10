@@ -18,6 +18,10 @@ pub mod utils;
 use crate::data_structures::QantTensor1;
 use errors::ToolkitError;
 
+// Needed by Rust callers of `memory_management::QantMemoryHandle`: without the
+// re-export the type is unnameable outside this crate and the device-memory
+// API is reachable only through the C and Python bridges.
+pub use qant_driver_import::QantDataRole;
 pub use qant_driver_import::driver_get_available_npus as get_available_npus;
 pub use qant_driver_import::driver_get_device_info as get_device_info;
 pub use qant_driver_import::driver_get_perf_counter as get_perf_counter;
